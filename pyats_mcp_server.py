@@ -15,7 +15,7 @@ from typing import Dict, Any, Optional
 import asyncio
 from functools import partial
 import mcp.types as types
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
 # --- Basic Logging Setup ---
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -455,4 +455,7 @@ async def pyats_run_linux_command(device_name: str, command: str) -> str:
 # --- Main Function ---
 if __name__ == "__main__":
     logger.info("🚀 Starting pyATS FastMCP Server...")
-    mcp.run(transport="streamable-http")
+    # Ensure port is an integer
+    port = 8080
+    logger.info(f"Starting server on port {port}")
+    mcp.run(transport="http", host="10.0.0.130", port=port)
