@@ -455,4 +455,4 @@ async def pyats_run_linux_command(device_name: str, command: str) -> str:
 # --- Main Function ---
 if __name__ == "__main__":
     logger.info("🚀 Starting pyATS FastMCP Server...")
-    mcp.run()
+    mcp.run(transport="streamable-http")
