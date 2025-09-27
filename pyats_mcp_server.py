@@ -16,6 +16,7 @@ import asyncio
 from functools import partial
 import mcp.types as types
 from fastmcp import FastMCP
+from datetime import datetime
 
 # --- Basic Logging Setup ---
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -63,6 +64,7 @@ def _get_device(device_name: str):
                 connection_timeout=120,
                 learn_hostname=True,
                 log_stdout=False,
+                logfile = (f"/tmp/{device_name}-cli-{datetime.now().strftime("%m-%d %H-%M-%S")}.log"),
                 mit=True
             )
             logger.info(f"Connected to {device_name}")
